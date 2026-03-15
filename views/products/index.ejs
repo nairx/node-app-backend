@@ -8,7 +8,7 @@
     <h1>Products Page</h1>
     <a href="/admin/products/add">Add new product</a>
     <ol>
-    <% products.forEach(product=>{ %>
+    <%  products.forEach(product=>{ %>
         <li><%= product.name %>-<%= product.price %>-<%= product.desc %> - <%= product.imageUrl %>
         <a href="/admin/products/edit/<%= product._id %>">Edit</a> - <a href="/admin/products/delete/<%= product._id %>">Delete</a></li>
         

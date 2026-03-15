@@ -7,11 +7,19 @@ const login = async (req, res) => {
   else res.redirect("/");
 };
 
-const loginForm = async (req,res) => {
-    res.render("auth/login")
-}
+const loginForm = async (req, res) => {
+  res.render("auth/login");
+};
 
-const logout = async (req,res) => {
-  res.redirect("/")
-}
-export {login,loginForm,logout}
+const registerForm = async (req, res) => {
+  res.render("auth/register");
+};
+
+const register = async (req, res) => {
+  const user = await userModel.create(req.body);
+  res.redirect("/");
+};
+const logout = async (req, res) => {
+  res.redirect("/");
+};
+export { login, loginForm, logout, registerForm, register };
