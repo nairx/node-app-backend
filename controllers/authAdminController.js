@@ -2,9 +2,13 @@ import userModel from "../models/userModel.js";
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-  const user = await userModel.findOne({ email, password });
-  if (user) res.redirect("/admin/products");
-  else res.redirect("/");
+  const user = await userModel.findOne({ email, password,role:"admin" });
+  if (user) {
+    req.session.user = user;
+    res.redirect("/admin/products");
+  } else {
+    res.redirect("/");
+  }
 };
 
 const loginForm = async (req, res) => {
@@ -20,6 +24,8 @@ const register = async (req, res) => {
   res.redirect("/");
 };
 const logout = async (req, res) => {
+  req.session.destroy();
+  res.locals.user = null;
   res.redirect("/");
 };
 export { login, loginForm, logout, registerForm, register };
