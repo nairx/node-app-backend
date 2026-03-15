@@ -10,4 +10,8 @@ const login = async (req, res) => {
 const loginForm = async (req,res) => {
     res.render("auth/login")
 }
-export {login,loginForm}
+
+const logout = async (req,res) => {
+  res.redirect("/")
+}
+export {login,loginForm,logout}
